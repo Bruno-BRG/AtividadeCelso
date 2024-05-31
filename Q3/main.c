@@ -8,9 +8,9 @@
 #define NUM_ALUNOS 5
 
 typedef struct {
-    char nomeAluno[MAX_LENGTH];
-    int matriculaAluno;
-    char cursoAluno[MAX_LENGTH];
+    char nomeAbencoado[MAX_LENGTH];
+    int matriculaAbencoado;
+    char cursoAbencoado[MAX_LENGTH];
 } Aluno;
 
 int main() {
@@ -21,24 +21,24 @@ int main() {
         printf("\nAluno %d:\n", i+1);
 
         printf("Nome: ");
-        fgets(alunos[i].nomeAluno, MAX_LENGTH, stdin);
-        alunos[i].nomeAluno[strcspn(alunos[i].nomeAluno, "\n")] = '\0';
+        fgets(alunos[i].nomeAbencoado, MAX_LENGTH, stdin);
+        alunos[i].nomeAbencoado[strcspn(alunos[i].nomeAbencoado, "\n")] = '\0';
 
         printf("Número de matrícula: ");
-        scanf("%d", &alunos[i].matriculaAluno);
+        scanf("%d", &alunos[i].matriculaAbencoado);
         while (getchar() != '\n');
 
         printf("Curso: ");
-        fgets(alunos[i].cursoAluno, MAX_LENGTH, stdin);
-        alunos[i].cursoAluno[strcspn(alunos[i].cursoAluno, "\n")] = '\0'; 
+        fgets(alunos[i].cursoAbencoado, MAX_LENGTH, stdin);
+        alunos[i].cursoAbencoado[strcspn(alunos[i].cursoAbencoado, "\n")] = '\0'; 
     }
 
     printf("\nDados dos alunos:\n");
     for (int i = 0; i < NUM_ALUNOS; i++) {
         printf("\nAluno %d:\n", i+1);
-        printf("Nome: %s\n", alunos[i].nomeAluno);
+        printf("Nome: %s\n", alunos[i].nomeAbencoado);
         printf("Número de matrícula: %d\n", alunos[i].matriculaAluno);
-        printf("Curso: %s\n", alunos[i].cursoAluno);
+        printf("Curso: %s\n", alunos[i].cursoAbencoado);
     }
 
     return 0;
