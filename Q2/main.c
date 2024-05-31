@@ -31,7 +31,7 @@ int main() {
     printf("\nDados da pessoa:\n");
     printf("Nome: %s\n", usuario.nomeDoUsuario);
     printf("Idade: %d\n", usuario.idadeDoUsuario);
-    printf("Endereco: %s\n", usuario.endereco);
+    printf("Endereco: %s\n", usuario.enderecoDeResidenciaDoUsuario);
 
     return 0;
 }
