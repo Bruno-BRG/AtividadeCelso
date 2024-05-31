@@ -8,15 +8,15 @@
 
 typedef struct {
     int matriculaDoSerAbencoado;
-    char nome[100];
+    char nomeAbencoado[100];
     float nota1;
     float nota2;
     float nota3;
     float media;
-} Aluno;
+} Abencoado;
 
 int main() {
-    Aluno alunos[NUM_ABENCOADOS];
+    Abencoado alunos[NUM_ABENCOADOS];
     float maiorNota1 = 0;
     int indiceMaiorNota1;
     float maiorMedia = 0;
@@ -29,7 +29,7 @@ int main() {
         printf("Matrícula: ");
         scanf("%d", &alunos[i].matriculaDoSerAbencoado);
         printf("Nome: ");
-        scanf("%s", alunos[i].nome);
+        scanf("%s", alunos[i].nomeAbencoado);
         printf("Nota da primeira prova: ");
         scanf("%f", &alunos[i].nota1);
         printf("Nota da segunda prova: ");
@@ -57,22 +57,22 @@ int main() {
 
     printf("\nAbencodo com maior nota na primeira prova:\n");
     printf("Matrícula: %d\n", alunos[indiceMaiorNota1].matriculaDoSerAbencoado);
-    printf("Nome: %s\n", alunos[indiceMaiorNota1].nome);
+    printf("Nome: %s\n", alunos[indiceMaiorNota1].nomeAbencoado);
     printf("Nota da primeira prova: %.2f\n\n", alunos[indiceMaiorNota1].nota1);
 
     printf("Abencoado com maior média geral:\n");
     printf("Matrícula: %d\n", alunos[indiceMaiorMedia].matriculaDoSerAbencoado);
-    printf("Nome: %s\n", alunos[indiceMaiorMedia].nome);
+    printf("Nome: %s\n", alunos[indiceMaiorMedia].nomeAbencoado);
     printf("Média geral: %.2f\n\n", alunos[indiceMaiorMedia].media);
 
     printf("Abencoado com menor média geral:\n");
     printf("Matrícula: %d\n", alunos[indiceMenorMedia].matriculaDoSerAbencoado);
-    printf("Nome: %s\n", alunos[indiceMenorMedia].nome);
+    printf("Nome: %s\n", alunos[indiceMenorMedia].nomeAbencoado);
     printf("Média geral: %.2f\n\n", alunos[indiceMenorMedia].media);
 
     printf("Situação dos abencoados:\n");
     for (int i = 0; i < NUM_ABENCOADOS; i++) {
-        printf("%s - ", alunos[i].nome);
+        printf("%s - ", alunos[i].nomeAbencoado);
         if (alunos[i].media >= 6.0) {
             printf("Aprovado\n");
         } else {
