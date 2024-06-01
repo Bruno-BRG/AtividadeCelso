@@ -27,7 +27,7 @@ int main() {
     data data = {1, 6, 2024};
     printf("Data: %02d/%02d/%04d\n", data.diaQueExisteNoCalendario, data.mesQueExisteNoCalendario, data.anoQueExisteNoCalendario);
 
-    compromisso compromisso = {data, horario, "Reuniao com equipe de desenvolvimento"};
+    compromisso compromisso = {data, horario, "Reuniao com a equipe"};
     printf("Compromisso: %s, marcado para %02d/%02d/%04d, as %02d:%02d:%02d\n", compromisso.descricao, 
            compromisso.data.diaQueExisteNoCalendario, compromisso.data.mesQueExisteNoCalendario, compromisso.data.anoQueExisteNoCalendario, 
            compromisso.horario.horaQueExisteNoRelogio, compromisso.horario.minutosQueExistemNoRelogio, compromisso.horario.segundosQueExistemNoRelogio);
