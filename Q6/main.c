@@ -2,30 +2,28 @@
 
 #include <stdio.h>
 
-#define MAX_ALUNOS 10
-
-typedef struct {
+struct Aluno{
     int matriculaAbencoado;
     char nomeAbencoado[100];
     int codigo_disciplina;
     float nota1;
     float nota2;
     float media_final;
-} Aluno;
+};
 
 float calcular_media(float nota1, float nota2) {
     return (nota1 * 1.0 + nota2 * 2.0) / 3.0;
 }
 
 int main() {
-    Aluno alunos[MAX_ALUNOS];
+    struct Aluno alunos[10];
     int i, num_alunos;
 
-    printf("Quantos alunos (até %d)? ", MAX_ALUNOS);
+    printf("Quantos alunos (até %d)? ", 10);
     scanf("%d", &num_alunos);
 
-    if (num_alunos > MAX_ALUNOS) {
-        printf("Número máximo de alunos é %d.\n", MAX_ALUNOS);
+    if (num_alunos > 10) {
+        printf("Número máximo de alunos é %d.\n", 10);
         return 1;
     }
 

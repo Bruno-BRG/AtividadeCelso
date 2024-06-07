@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-typedef struct {
+struct Funcionario {
     char nome[50];
     int idade;
     char sexo;
@@ -11,10 +11,10 @@ typedef struct {
     int codigoSetor;
     char cargo[31];
     double salario;
-} Funcionario;
+};
 
 int main() {
-    Funcionario funcionario;
+    struct Funcionario funcionario;
 
     printf("Digite o nome do funcionario: ");
     fgets(funcionario.nome, 50, stdin);

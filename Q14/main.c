@@ -1,16 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_CARROS 5
-#define TAM_MARCA 16
-
-typedef struct {
-    char marca[TAM_MARCA];
+struct Carro {
+    char marca[16];
     int ano;
     float preco;
 } Carro;
 
-void lerCarro(Carro *carro) {
+void lerCarro(struct Carro *carro) {
     printf("Digite a marca do carro (max 15 letras): ");
     scanf("%15s", carro->marca);
     printf("Digite o ano do carro: ");
@@ -19,17 +16,17 @@ void lerCarro(Carro *carro) {
     scanf("%f", &carro->preco);
 }
 
-void exibirCarro(const Carro *carro) {
+void exibirCarro(const struct Carro *carro) {
     printf("Marca: %s\n", carro->marca);
     printf("Ano: %d\n", carro->ano);
     printf("Preco: %.2f\n", carro->preco);
 }
 
 int main() {
-    Carro carros[MAX_CARROS];
+    struct Carro carros[5];
     float p;
 
-    for (int i = 0; i < MAX_CARROS; i++) {
+    for (int i = 0; i < 5; i++) {
         printf("Digite os dados do carro %d:\n", i + 1);
         lerCarro(&carros[i]);
     }
@@ -41,7 +38,7 @@ int main() {
         if (p != 0) {
             printf("\nCarros com preco menor que %.2f:\n", p);
             int encontrou = 0;
-            for (int i = 0; i < MAX_CARROS; i++) {
+            for (int i = 0; i < 5; i++) {
                 if (carros[i].preco < p) {
                     exibirCarro(&carros[i]);
                     encontrou = 1;

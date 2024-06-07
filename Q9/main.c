@@ -1,16 +1,15 @@
 // Celso
 
-
 #include <stdio.h>
 #include <math.h>
 
-typedef struct {
+struct Complexo {
     double real;
     double imaginario;
-} Complexo;
+};
 
-Complexo lerComplexo(const char* nome) {
-    Complexo z;
+Complexo lerComplexo(const struct char* nome) {
+    struct Complexo z;
     printf("Digite a parte real de %s: ", nome);
     scanf("%lf", &z.real);
     printf("Digite a parte imaginaria de %s: ", nome);
@@ -18,38 +17,38 @@ Complexo lerComplexo(const char* nome) {
     return z;
 }
 
-Complexo somaComplexo(Complexo z, Complexo w) {
-    Complexo resultado;
+Complexo somaComplexo(struct Complexo z, struct Complexo w) {
+    struct omplexo resultado;
     resultado.real = z.real + w.real;
     resultado.imaginario = z.imaginario + w.imaginario;
     return resultado;
 }
 
-Complexo subtraiComplexo(Complexo z, Complexo w) {
-    Complexo resultado;
+Complexo subtraiComplexo(struct Complexo z, struct Complexo w) {
+    struct Complexo resultado;
     resultado.real = z.real - w.real;
     resultado.imaginario = z.imaginario - w.imaginario;
     return resultado;
 }
 
-Complexo multiplicaComplexo(Complexo z, Complexo w) {
-    Complexo resultado;
+Complexo multiplicaComplexo(struct Complexo z, struct Complexo w) {
+    struct Complexo resultado;
     resultado.real = z.real * w.real - z.imaginario * w.imaginario;
     resultado.imaginario = z.real * w.imaginario + z.imaginario * w.real;
     return resultado;
 }
 
-double moduloComplexo(Complexo z) {
+double moduloComplexo(struct Complexo z) {
     return sqrt(z.real * z.real + z.imaginario * z.imaginario);
 }
 
-void imprimeComplexo(const char* nome, Complexo z) {
+void imprimeComplexo(const char* nome, struct Complexo z) {
     printf("%s = %.2f + %.2fi\n", nome, z.real, z.imaginario);
 }
 
 int main() {
-    Complexo z, w;
-    Complexo soma, subtracao, produto;
+    struct Complexo z, w;
+    struct Complexo soma, subtracao, produto;
     double moduloZ, moduloW;
 
     z = lerComplexo("z");

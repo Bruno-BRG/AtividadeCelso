@@ -1,17 +1,14 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_PRODUTOS 5
-#define TAM_NOME 16
-
-typedef struct {
+struct Produto {
     int codigo;
-    char nome[TAM_NOME];
+    char nome[16];
     float preco;
     int quantidade;
 } Produto;
 
-void lerProduto(Produto *produto) {
+void lerProduto(struct Produto *produto) {
     printf("Digite o codigo do produto: ");
     scanf("%d", &produto->codigo);
     printf("Digite o nome do produto (max 15 letras): ");
@@ -22,7 +19,7 @@ void lerProduto(Produto *produto) {
     scanf("%d", &produto->quantidade);
 }
 
-int encontrarProduto(const Produto produtos[], int codigo, int numProdutos) {
+int encontrarProduto(const struct Produto produtos[], int codigo, int numProdutos) {
     for (int i = 0; i < numProdutos; i++) {
         if (produtos[i].codigo == codigo) {
             return i;
@@ -31,7 +28,7 @@ int encontrarProduto(const Produto produtos[], int codigo, int numProdutos) {
     return -1; 
 }
 
-void processarPedido(Produto produtos[], int numProdutos) {
+void processarPedido(struct Produto produtos[], int numProdutos) {
     int codigo, quantidade;
     printf("Digite o codigo do produto (ou 0 para sair): ");
     scanf("%d", &codigo);
@@ -54,15 +51,15 @@ void processarPedido(Produto produtos[], int numProdutos) {
 }
 
 int main() {
-    Produto produtos[MAX_PRODUTOS];
+    Produto produtos[5];
 
-    for (int i = 0; i < MAX_PRODUTOS; i++) {
+    for (int i = 0; i < 5; i++) {
         printf("Digite os dados do produto %d:\n", i + 1);
         lerProduto(&produtos[i]);
     }
 
     while (1) {
-        processarPedido(produtos, MAX_PRODUTOS);
+        processarPedido(produtos, 5);
     }
 
     return 0;

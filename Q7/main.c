@@ -3,17 +3,17 @@
 #include <stdio.h>
 #include <math.h>
 
-typedef struct {
+struct CoordenadaPolar {
     double raio;
     double argumento; 
-} CoordenadaPolar;
+};
 
 typedef struct {
     double x;
     double y;
 } CoordenadaCartesiana;
 
-CoordenadaCartesiana converteParaCartesiana(CoordenadaPolar polar) {
+CoordenadaCartesiana converteParaCartesiana(struct CoordenadaPolar polar) {
     CoordenadaCartesiana cartesiana;
     cartesiana.x = polar.raio * cos(polar.argumento);
     cartesiana.y = polar.raio * sin(polar.argumento);
@@ -21,7 +21,7 @@ CoordenadaCartesiana converteParaCartesiana(CoordenadaPolar polar) {
 }
 
 int main() {
-    CoordenadaPolar pontoPolar;
+    struct CoordenadaPolar pontoPolar;
     CoordenadaCartesiana pontoCartesiano;
 
     printf("Digite o raio: ");

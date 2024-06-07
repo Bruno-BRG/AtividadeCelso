@@ -4,24 +4,21 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_LENGTH 100
-#define NUM_ALUNOS 5
-
-typedef struct {
-    char nomeAbencoado[MAX_LENGTH];
+struct Aluno {
+    char nomeAbencoado[100];
     int matriculaAbencoado;
-    char cursoAbencoado[MAX_LENGTH];
-} Aluno;
+    char cursoAbencoado[100];
+};
 
 int main() {
-    Aluno alunos[NUM_ALUNOS];
+    struct Aluno alunos[5];
 
-    printf("Digite os dados dos %d alunos:\n", NUM_ALUNOS);
-    for (int i = 0; i < NUM_ALUNOS; i++) {
+    printf("Digite os dados dos %d alunos:\n", 5);
+    for (int i = 0; i < 5; i++) {
         printf("\nAluno %d:\n", i+1);
 
         printf("Nome: ");
-        fgets(alunos[i].nomeAbencoado, MAX_LENGTH, stdin);
+        fgets(alunos[i].nomeAbencoado, 100, stdin);
         alunos[i].nomeAbencoado[strcspn(alunos[i].nomeAbencoado, "\n")] = '\0';
 
         printf("Número de matrícula: ");
@@ -29,12 +26,12 @@ int main() {
         while (getchar() != '\n');
 
         printf("Curso: ");
-        fgets(alunos[i].cursoAbencoado, MAX_LENGTH, stdin);
+        fgets(alunos[i].cursoAbencoado, 100, stdin);
         alunos[i].cursoAbencoado[strcspn(alunos[i].cursoAbencoado, "\n")] = '\0'; 
     }
 
     printf("\nDados dos alunos:\n");
-    for (int i = 0; i < NUM_ALUNOS; i++) {
+    for (int i = 0; i < 5; i++) {
         printf("\nAluno %d:\n", i+1);
         printf("Nome: %s\n", alunos[i].nomeAbencoado);
         printf("Número de matrícula: %d\n", alunos[i].matriculaAluno);

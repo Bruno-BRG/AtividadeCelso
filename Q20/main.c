@@ -1,30 +1,25 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_RECEITAS 5
-#define MAX_INGREDIENTES 10
-#define TAM_NOME_RECEITA 26
-#define TAM_NOME_INGREDIENTE 31
-
-typedef struct {
-    char nome[TAM_NOME_INGREDIENTE];
+struct Ingrediente {
+    char nome[31];
     int quantidade;
 } Ingrediente;
 
-typedef struct {
-    char nome[TAM_NOME_RECEITA];
+struct Receita {
+    char nome[26];
     int qtdIngredientes;
-    Ingrediente ingredientes[MAX_INGREDIENTES];
+    struct Ingrediente ingredientes[10];
 } Receita;
 
-void lerIngrediente(Ingrediente *ingrediente) {
+void lerIngrediente(struct Ingrediente *ingrediente) {
     printf("Digite o nome do ingrediente (max 30 letras): ");
     scanf(" %[^\n]", ingrediente->nome);
     printf("Digite a quantidade necessaria: ");
     scanf("%d", &ingrediente->quantidade);
 }
 
-void lerReceita(Receita *receita) {
+void lerReceita(struct Receita *receita) {
     printf("Digite o nome da receita (max 25 letras): ");
     scanf(" %[^\n]", receita->nome);
     printf("Digite a quantidade de ingredientes: ");
@@ -36,7 +31,7 @@ void lerReceita(Receita *receita) {
     }
 }
 
-void buscarReceita(const Receita receitas[], int numReceitas, const char nome[]) {
+void buscarReceita(const struct Receita receitas[], int numReceitas, const char nome[]) {
     int encontrou = 0;
     for (int i = 0; i < numReceitas; i++) {
         if (strcmp(receitas[i].nome, nome) == 0) {
@@ -56,10 +51,10 @@ void buscarReceita(const Receita receitas[], int numReceitas, const char nome[])
 }
 
 int main() {
-    Receita receitas[MAX_RECEITAS];
-    char nomeBusca[TAM_NOME_RECEITA];
+    struct Receita receitas[5];
+    char nomeBusca[26];
 
-    for (int i = 0; i < MAX_RECEITAS; i++) {
+    for (int i = 0; i < 5; i++) {
         printf("Digite os dados da receita %d:\n", i + 1);
         lerReceita(&receitas[i]);
     }
@@ -70,7 +65,7 @@ int main() {
         if (strlen(nomeBusca) == 0) {
             break;
         }
-        buscarReceita(receitas, MAX_RECEITAS, nomeBusca);
+        buscarReceita(receitas, 5, nomeBusca);
     }
 
     return 0;

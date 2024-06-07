@@ -4,23 +4,19 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_DIRETORES 5
-#define MAX_NOME 21
-#define MAX_NOME_FILME 50
-
-typedef struct {
-    char nome[MAX_NOME_FILME];
+struct Filme{
+    char nome[50];
     int ano;
     int duracao; 
 } Filme;
 
-typedef struct {
-    char nome[MAX_NOME];
+struct Diretor{
+    char nome[21];
     int quantidadeFilmes;
-    Filme *filmes; 
+    struct Filme *filmes; 
 } Diretor;
 
-void lerFilme(Filme *filme) {
+void lerFilme(struct Filme *filme) {
     printf("Nome do filme: ");
     scanf(" %[^\n]", filme->nome);
     printf("Ano do filme: ");
@@ -29,7 +25,7 @@ void lerFilme(Filme *filme) {
     scanf("%d", &filme->duracao);
 }
 
-void lerDiretor(Diretor *diretor) {
+void lerDiretor(struct Diretor *diretor) {
     printf("Nome do diretor: ");
     scanf(" %[^\n]", diretor->nome);
     printf("Quantidade de filmes: ");
@@ -42,7 +38,7 @@ void lerDiretor(Diretor *diretor) {
     }
 }
 
-void mostrarFilmes(Diretor *diretor) {
+void mostrarFilmes(struct Diretor *diretor) {
     printf("\nFilmes do diretor %s:\n", diretor->nome);
     for (int i = 0; i < diretor->quantidadeFilmes; i++) {
         printf("Filme %d: %s\n", i + 1, diretor->filmes[i].nome);
@@ -52,10 +48,10 @@ void mostrarFilmes(Diretor *diretor) {
 }
 
 int main() {
-    Diretor diretores[MAX_DIRETORES];
-    char nomeBusca[MAX_NOME];
+    struct Diretor diretores[5];
+    char nomeBusca[21];
 
-    for (int i = 0; i < MAX_DIRETORES; i++) {
+    for (int i = 0; i < 5; i++) {
         printf("\nLendo dados do diretor %d:\n", i + 1);
         lerDiretor(&diretores[i]);
     }
@@ -69,7 +65,7 @@ int main() {
         }
 
         int encontrado = 0;
-        for (int i = 0; i < MAX_DIRETORES; i++) {
+        for (int i = 0; i < 5; i++) {
             if (strcmp(diretores[i].nome, nomeBusca) == 0) {
                 mostrarFilmes(&diretores[i]);
                 encontrado = 1;
@@ -82,7 +78,7 @@ int main() {
         }
     }
 
-    for (int i = 0; i < MAX_DIRETORES; i++) {
+    for (int i = 0; i < 5; i++) {
         free(diretores[i].filmes);
     }
 

@@ -3,13 +3,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct {
+struct Aluno{
     char nome[100];
     int matricula;
     float mediaFinal;
-} Aluno;
+};
 
-void lerAluno(Aluno *aluno) {
+void lerAluno(struct Aluno *aluno) {
     printf("Digite o nome do aluno: ");
     fgets(aluno->nome, sizeof(aluno->nome), stdin);
     aluno->nome[strcspn(aluno->nome, "\n")] = '\0';
@@ -23,7 +23,7 @@ void lerAluno(Aluno *aluno) {
     getchar(); 
 }
 
-void imprimeAluno(const Aluno *aluno) {
+void imprimeAluno(const struct Aluno *aluno) {
     printf("Nome: %s\n", aluno->nome);
     printf("Matricula: %d\n", aluno->matricula);
     printf("Media Final: %.2f\n", aluno->mediaFinal);
@@ -31,9 +31,9 @@ void imprimeAluno(const Aluno *aluno) {
 }
 
 int main() {
-    Aluno alunos[10];
-    Aluno aprovados[10];
-    Aluno reprovados[10];
+    struct Aluno alunos[10];
+    struct aprovados[10];
+    struct reprovados[10];
     int countAprovados = 0;
     int countReprovados = 0;
     float mediaMinima = 5.0;

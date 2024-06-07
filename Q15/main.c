@@ -1,17 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_LIVROS 5
-#define TAM_TITULO 31
-#define TAM_AUTOR 16
-
-typedef struct {
-    char titulo[TAM_TITULO];
-    char autor[TAM_AUTOR];
+struct Livro {
+    char titulo[31];
+    char autor[16];
     int ano;
 } Livro;
 
-void lerLivro(Livro *livro) {
+void lerLivro(struct Livro *livro) {
     printf("Digite o titulo do livro (max 30 letras): ");
     scanf(" %[^\n]", livro->titulo);
     printf("Digite o autor do livro (max 15 letras): ");
@@ -20,18 +16,18 @@ void lerLivro(Livro *livro) {
     scanf("%d", &livro->ano);
 }
 
-void exibirLivro(const Livro *livro) {
+void exibirLivro(const struct Livro *livro) {
     printf("Titulo: %s\n", livro->titulo);
     printf("Autor: %s\n", livro->autor);
     printf("Ano: %d\n", livro->ano);
 }
 
 int main() {
-    Livro livros[MAX_LIVROS];
-    char busca[TAM_TITULO];
+    struct Livro livros[5];
+    char busca[31];
     int encontrou = 0;
 
-    for (int i = 0; i < MAX_LIVROS; i++) {
+    for (int i = 0; i < 5; i++) {
         printf("Digite os dados do livro %d:\n", i + 1);
         lerLivro(&livros[i]);
     }
@@ -40,7 +36,7 @@ int main() {
     scanf(" %[^\n]", busca);
 
     printf("\nLivros encontrados:\n");
-    for (int i = 0; i < MAX_LIVROS; i++) {
+    for (int i = 0; i < 5; i++) {
         if (strcmp(livros[i].titulo, busca) == 0) {
             exibirLivro(&livros[i]);
             encontrou = 1;

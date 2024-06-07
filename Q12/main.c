@@ -3,12 +3,12 @@
 #include <stdlib.h>
 #include <time.h>
 
-typedef struct {
+struct Carta {
     char valor[3];
     char naipe[9];
-} Carta;
+};
 
-void inicializarBaralho(Carta baralho[52]) {
+void inicializarBaralho(struct Carta baralho[52]) {
     const char* valores[] = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
     const char* naipes[] = {"Copas", "Ouros", "Espadas", "Paus"};
 
@@ -22,23 +22,23 @@ void inicializarBaralho(Carta baralho[52]) {
     }
 }
 
-void embaralharBaralho(Carta baralho[52]) {
+void embaralharBaralho(struct Carta baralho[52]) {
     for (int i = 0; i < 52; i++) {
         int r = rand() % 52;
-        Carta temp = baralho[i];
+        struct Carta temp = baralho[i];
         baralho[i] = baralho[r];
         baralho[r] = temp;
     }
 }
 
-void distribuirCartas(Carta baralho[52], Carta jogador1[5], Carta jogador2[5]) {
+void distribuirCartas(struct Carta baralho[52], struct Carta jogador1[5], struct Carta jogador2[5]) {
     for (int i = 0; i < 5; i++) {
         jogador1[i] = baralho[i * 2];
         jogador2[i] = baralho[i * 2 + 1];
     }
 }
 
-void imprimirCartas(const char* nomeJogador, Carta cartas[5]) {
+void imprimirCartas(const char* nomeJogador, struct Carta cartas[5]) {
     printf("Cartas do %s:\n", nomeJogador);
     for (int i = 0; i < 5; i++) {
         printf("%s de %s\n", cartas[i].valor, cartas[i].naipe);
@@ -47,9 +47,9 @@ void imprimirCartas(const char* nomeJogador, Carta cartas[5]) {
 }
 
 int main() {
-    Carta baralho[52];
-    Carta jogador1[5];
-    Carta jogador2[5];
+    struct Carta baralho[52];
+    struct Carta jogador1[5];
+    struct Carta jogador2[5];
 
     srand(time(NULL));
 

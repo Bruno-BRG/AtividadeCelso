@@ -4,19 +4,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define NUM_ABENCOADOS 5
-
-typedef struct {
+struct Abencoado{
     int matriculaDoSerAbencoado;
     char nomeAbencoado[100];
     float nota1;
     float nota2;
     float nota3;
     float media;
-} Abencoado;
+};
 
 int main() {
-    Abencoado alunos[NUM_ABENCOADOS];
+    struct Abencoado alunos[5];
     float maiorNota1 = 0;
     int indiceMaiorNota1;
     float maiorMedia = 0;
@@ -24,7 +22,7 @@ int main() {
     float menorMedia = 10; 
     int indiceMenorMedia;
 
-    for (int i = 0; i < NUM_ABENCOADOS; i++) {
+    for (int i = 0; i < 5; i++) {
         printf("Digite os dados do aluno %d:\n", i+1);
         printf("Matrícula: ");
         scanf("%d", &alunos[i].matriculaDoSerAbencoado);
@@ -71,7 +69,7 @@ int main() {
     printf("Média geral: %.2f\n\n", alunos[indiceMenorMedia].media);
 
     printf("Situação dos abencoados:\n");
-    for (int i = 0; i < NUM_ABENCOADOS; i++) {
+    for (int i = 0; i < 5; i++) {
         printf("%s - ", alunos[i].nomeAbencoado);
         if (alunos[i].media >= 6.0) {
             printf("Aprovado\n");

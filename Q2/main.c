@@ -4,19 +4,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_LENGTH 100
-
-typedef struct {
-    char nomeDoUsuario[MAX_LENGTH];
+struct Usuario{
+    char nomeDoUsuario[100];
     int idadeDoUsuario;
-    char enderecoDeResidenciaDoUsuario[MAX_LENGTH];
+    char enderecoDeResidenciaDoUsuario[100];
 } Usuario;
 
 int main() {
-    Usuario usuario;
+    struct Usuario usuario;
 
     printf("Digite o nome do usuario: ");
-    fgets(usuario.nomeDoUsuario, MAX_LENGTH, stdin);
+    fgets(usuario.nomeDoUsuario, 100, stdin);
     usuario.nomeDoUsuario[strcspn(usuario.nomeDoUsuario, "\n")] = '\0';
 
     printf("Digite a idade da pessoa: ");
@@ -25,7 +23,7 @@ int main() {
     while (getchar() != '\n');
 
     printf("Digite o endereco da pessoa: ");
-    fgets(usuario.enderecoDeResidenciaDoUsuario, MAX_LENGTH, stdin);
+    fgets(usuario.enderecoDeResidenciaDoUsuario, 100, stdin);
     usuario.enderecoDeResidenciaDoUsuario[strcspn(usuario.enderecoDeResidenciaDoUsuario, "\n")] = '\0';
 
     printf("\nDados da pessoa:\n");

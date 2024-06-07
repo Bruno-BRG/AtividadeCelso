@@ -3,14 +3,14 @@
 #include <string.h>
 #include <ctype.h>
 
-typedef struct {
+struct pessoa {
     char nome[100];
     char endereco[200];
     char dataNascimento[11];
     char cidade[100];
     char cep[10];
     char email[100];
-} Pessoa;
+};
 
 int validarData(const char* data) {
     int dia, mes, ano;
@@ -38,11 +38,11 @@ int validarData(const char* data) {
 }
 
 int validarCep(const char* cep) {
-    if (strlen(cep) != 8) {
+    if (strlen(struct cep) != 8) {
         return 0; 
     }
     for (int i = 0; i < 8; i++) {
-        if (!isdigit(cep[i])) {
+        if (!isdigit(struct cep[i])) {
             return 0; 
         }
     }
@@ -57,7 +57,7 @@ int validarEmail(const char* email) {
     return 1; 
 }
 
-void lerDados(Pessoa *pessoa) {
+void lerDados(struct pessoa *pessoa) {
     printf("Digite o nome: ");
     fgets(pessoa->nome, sizeof(pessoa->nome), stdin);
     pessoa->nome[strcspn(pessoa->nome, "\n")] = '\0'; 
@@ -83,7 +83,7 @@ void lerDados(Pessoa *pessoa) {
     pessoa->email[strcspn(pessoa->email, "\n")] = '\0'; 
 }
 
-void imprimirDados(const Pessoa *pessoa) {
+void imprimirDados(struct pessoa *pessoa) {
     printf("\n--- Dados Pessoais ---\n");
     printf("Nome: %s\n", pessoa->nome);
     printf("Endereco: %s\n", pessoa->endereco);
@@ -94,7 +94,7 @@ void imprimirDados(const Pessoa *pessoa) {
 }
 
 int main() {
-    Pessoa pessoa;
+    struct pessoa pessoa;
 
     lerDados(&pessoa);
 
