@@ -27,7 +27,6 @@ int main() {
         return 1;
     }
 
-    // Leitura dos dados dos alunos
     for (i = 0; i < num_alunos; i++) {
         printf("\nAluno %d:\n", i + 1);
 

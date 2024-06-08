@@ -23,7 +23,7 @@ int converterParaDias(struct dma data) {
 
     for (int i = 0; i < data.mes - 1; i++) {
         dias += diasPorMes[i];
-        if (i == 1 && bissextoPontoDeInterrogacao(data.ano)) { // Fevereiro de ano bissexto
+        if (i == 1 && bissextoPontoDeInterrogacao(data.ano)) { 
             dias += 1;
         }
     }
@@ -41,15 +41,12 @@ int diferencaDias(struct dma data1, struct dma data2) {
 int main() {
     struct dma data1, data2;
     
-    // Recebe a primeira data
     printf("Digite a primeira data (dia mes ano): ");
     scanf("%d %d %d", &data1.dia, &data1.mes, &data1.ano);
 
-    // Recebe a segunda data
     printf("Digite a segunda data (dia mes ano): ");
     scanf("%d %d %d", &data2.dia, &data2.mes, &data2.ano);
 
-    // Calcula a diferença em dias entre as duas datas
     int diferenca = diferencaDias(data1, data2);
 
     printf("A diferença em dias entre as datas é: %d\n", diferenca);
